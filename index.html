@@ -4,33 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV de Justine Colombari - Spécialiste e-commerce</title>
+    <meta name="description" content="CV en ligne de Justine Colombari, spécialiste e-commerce avec 13 ans d'expérience dans les achats et la gestion de commandes.">
+    <meta name="keywords" content="CV, Justine Colombari, e-commerce, achats, gestion de commandes, facturation">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
             --text-color: #333;
             --bg-color: #f0f0f0;
+            --button-bg: #3498db;
+            --button-text: #fff;
             --timeline-color: #34495e;
+        }
+
+        .dark-mode {
+            --primary-color: #1a2530;
+            --secondary-color: #2980b9;
+            --text-color: #ecf0f1;
+            --bg-color: #2c3e50;
+            --button-bg: #2980b9;
+            --button-text: #ecf0f1;
+            --timeline-color: #ecf0f1;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .dark-mode {
-            --primary-color: #34495e;
-            --secondary-color: #2980b9;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --timeline-color: #ecf0f1;
         }
 
         .cv-container {
@@ -46,6 +52,7 @@
             background-color: var(--primary-color);
             color: #ecf0f1;
             padding: 40px;
+            height: 100%;
         }
 
         .right-column {
@@ -55,15 +62,6 @@
         h1, h2, h3 {
             margin-bottom: 20px;
             color: var(--primary-color);
-        }
-
-        .left-column h2 {
-            color: #ecf0f1;
-            font-size: 1.2em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 2px solid #ecf0f1;
-            padding-bottom: 10px;
         }
 
         .skill-bar {
@@ -82,57 +80,42 @@
             transition: width 1s ease-in-out;
         }
 
+        .btn-custom {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .btn-custom:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .floating-nav {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
         .expertise-item, .experience-item {
-            margin-bottom: 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             padding: 15px;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .expertise-item:hover, .experience-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .expertise-item h3, .experience-item h3 {
-            color: var(--secondary-color);
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
-
-        .competences-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        #darkModeToggle, #printCV, #downloadPDF {
-            position: fixed;
-            top: 20px;
-            z-index: 1000;
-        }
-
-        #darkModeToggle {
-            right: 20px;
-        }
-
-        #printCV {
-            right: 150px;
-        }
-
-        #downloadPDF {
-            right: 280px;
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s, transform 0.5s;
-        }
-
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .timeline {
@@ -211,84 +194,71 @@
             left: -16px;
         }
 
-        .experience-item {
-            padding: 20px;
-            background-color: white;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-            background-color: var(--secondary-color);
-        }
-
-        .floating-nav {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            z-index: 1000;
-        }
-
-        @media print {
-            .floating-nav, #darkModeToggle, #printCV, #downloadPDF {
+        @media (max-width: 768px) {
+            .cv-container {
+                margin: 10px;
+            }
+            .left-column, .right-column {
+                padding: 20px;
+            }
+            .floating-nav {
                 display: none;
             }
-        }
-
-        @media screen and (max-width: 600px) {
+            .btn-custom {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
             .timeline::after {
                 left: 31px;
             }
-            
             .timeline-item {
                 width: 100%;
                 padding-left: 70px;
                 padding-right: 25px;
             }
-            
             .timeline-item::before {
                 left: 60px;
                 border: medium solid white;
                 border-width: 10px 10px 10px 0;
                 border-color: transparent white transparent transparent;
             }
-
             .left::after, .right::after {
                 left: 15px;
             }
-
             .right {
                 left: 0%;
             }
         }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
-    <button id="darkModeToggle" class="btn btn-secondary">Mode Sombre</button>
-    <button id="printCV" class="btn btn-primary" onclick="window.print()">Imprimer CV</button>
-    <button id="downloadPDF" class="btn btn-success">Télécharger PDF</button>
-
-    <nav class="floating-nav">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
-            <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
-            <li class="nav-item"><a class="nav-link" href="#education">Formation</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
-        </ul>
-    </nav>
-
-    <div class="cv-container">
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-12 text-center mt-3">
+                <button id="darkModeToggle" class="btn btn-custom">Mode Sombre</button>
+                <button id="printCV" class="btn btn-custom" onclick="window.print()">Imprimer CV</button>
+                <button id="downloadPDF" class="btn btn-custom">Télécharger PDF</button>
+                <button id="shareEmail" class="btn btn-custom">Partager par Email</button>
+            </div>
+        </div>
+        <div class="cv-container row">
             <div class="col-md-4 left-column">
-                <h2 id="about" class="animate__animated animate__fadeIn">À propos de moi</h2>
+                <h2 class="animate__animated animate__fadeIn">À PROPOS DE MOI</h2>
                 <p>Acheteuse chevronnée avec 13 ans d'expertise dans le e-commerce, je suis à la recherche d'un nouveau défi pour consolider mes compétences. Ma carrière est marquée par une progression constante et une maîtrise approfondie des enjeux spécifiques au secteur du commerce en ligne.</p>
                 
-                <h2 class="animate__animated animate__fadeIn">Compétences principales</h2>
+                <h2 class="animate__animated animate__fadeIn">COMPÉTENCES PRINCIPALES</h2>
                 <p>Facturation</p>
                 <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
                 <p>Gestion de la relation avec les fournisseurs</p>
@@ -299,19 +269,10 @@
                 <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
                 <p>Produits Sage</p>
                 <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
-                
-                <h2 class="animate__animated animate__fadeIn">Langues</h2>
-                <p>Français (Langue maternelle)</p>
-                <div class="skill-bar"><div class="skill-level" data-level="100"></div></div>
-                <p>Anglais (Professionnel)</p>
-                <div class="skill-bar"><div class="skill-level" data-level="80"></div></div>
-
-                <h2 class="animate__animated animate__fadeIn">Liens</h2>
-                <p><i class="fab fa-linkedin"></i> linkedin.com/in/justine-colombari</p>
             </div>
             <div class="col-md-8 right-column">
                 <h1 class="animate__animated animate__fadeInDown">JUSTINE COLOMBARI</h1>
-                <p class="animate__animated animate__fadeIn" style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 20px;">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
+                <p class="animate__animated animate__fadeIn">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
                 <div class="contact-info animate__animated animate__fadeIn">
                     <p><i class="fas fa-map-marker-alt"></i> Metz, Grand Est, France</p>
                     <p><i class="fas fa-envelope"></i> justine.colombari@email.com</p>
@@ -321,8 +282,8 @@
                 <h2 class="animate-on-scroll">Objectifs</h2>
                 <p class="animate-on-scroll">À l'écoute de nouvelles opportunités pour des postes d'Assistant commercial, Achats, Acheteur et Spécialiste des achats.</p>
 
-                <h2 id="expertise" class="animate-on-scroll">Expertise</h2>
-                <div class="expertise-item animate-on-scroll">
+                <h2 class="animate-on-scroll">Expertise</h2>
+                <div class="expertise-item animate-on-scroll" data-aos="fade-up">
                     <h3><i class="fas fa-shopping-cart"></i> Expertise en E-commerce :</h3>
                     <ul>
                         <li>Gestion stratégique des approvisionnements pour des plateformes de vente en ligne</li>
@@ -331,7 +292,7 @@
                         <li>Maîtrise des outils spécifiques au e-commerce (ERP, CRM, plateformes de marketplace)</li>
                     </ul>
                 </div>
-                <div class="expertise-item animate-on-scroll">
+                <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
                     <h3><i class="fas fa-handshake"></i> Compétences Clés en Achat :</h3>
                     <ul>
                         <li>Développement et maintien de relations durables avec les fournisseurs internationaux</li>
@@ -340,7 +301,7 @@
                         <li>Analyse approfondie des tendances du marché pour anticiper les besoins d'achat</li>
                     </ul>
                 </div>
-                <div class="expertise-item animate-on-scroll">
+                <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
                     <h3><i class="fas fa-chart-line"></i> Gestion Financière et Opérationnelle :</h3>
                     <ul>
                         <li>Maîtrise avancée du logiciel SAGE et des outils ERP spécifiques au e-commerce</li>
@@ -349,7 +310,7 @@
                         <li>Mise en place de KPIs pertinents pour suivre la performance des achats</li>
                     </ul>
                 </div>
-                <div class="expertise-item animate-on-scroll">
+                <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
                     <h3><i class="fas fa-lightbulb"></i> Approche Analytique et Innovante :</h3>
                     <ul>
                         <li>Veille technologique constante pour identifier les nouvelles opportunités produits</li>
@@ -359,10 +320,10 @@
                     </ul>
                 </div>
 
-                <h2 id="experience" class="animate-on-scroll">Expérience professionnelle</h2>
+                <h2 class="animate-on-scroll">Expérience professionnelle</h2>
                 <div class="timeline">
                     <div class="timeline-item right">
-                        <div class="experience-item animate-on-scroll">
+                        <div class="experience-item animate-on-scroll" data-aos="fade-left">
                             <h3>Assistante commerciale</h3>
                             <p>LA MAILLE FRANCAISE · CDI</p>
                             <p>sept. 2022 - aujourd'hui · 2 ans</p>
@@ -376,7 +337,7 @@
                         </div>
                     </div>
                     <div class="timeline-item left">
-                        <div class="experience-item animate-on-scroll">
+                        <div class="experience-item animate-on-scroll" data-aos="fade-right">
                             <h3>Assistante commerciale e-commerce</h3>
                             <p>DISTRIPHOT DIGITAL PHOTO · Temps plein</p>
                             <p>févr. 2011 - sept. 2022 · 11 ans 8 mois</p>
@@ -390,7 +351,7 @@
                         </div>
                     </div>
                     <div class="timeline-item right">
-                        <div class="experience-item animate-on-scroll">
+                        <div class="experience-item animate-on-scroll" data-aos="fade-left">
                             <h3>Assistante de gestion</h3>
                             <p>LA SNET · Temps plein</p>
                             <p>2008 - 2010 · 2 ans</p>
@@ -406,12 +367,12 @@
                 </div>
 
                 <h2 id="education" class="animate-on-scroll">Formation</h2>
-                <div class="experience-item animate-on-scroll">
+                <div class="experience-item animate-on-scroll" data-aos="fade-up">
                     <h3>IFA Business School Metz</h3>
                     <p>BTS, Assistante de Gestion PME-PMI</p>
                     <p>2009 - 2010</p>
                 </div>
-                <div class="experience-item animate-on-scroll">
+                <div class="experience-item animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
                     <h3>Lycée Anne de Méjanès</h3>
                     <p>Baccalauréat, Commerce</p>
                     <p>2007 - 2008</p>
@@ -419,34 +380,8 @@
 
                 <h2 id="skills" class="animate-on-scroll">Compétences techniques</h2>
                 <div class="competences-grid animate-on-scroll">
-                    <div>
-                        <p>Facturation</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
-                    </div>
-                    <div>
-                        <p>Gestion des stocks</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
-                    </div>
-                    <div>
-                        <p>Gestion de la relation avec les fournisseurs</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
-                    </div>
-                    <div>
-                        <p>Produits Sage</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
-                    </div>
-                    <div>
-                        <p>Gestion des achats</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
-                    </div>
-                    <div>
-                        <p>Microsoft Office</p>
-                        <div class="skill-bar"><div class="skill-level" data-level="85"></div></div>
-                    </div>
+                    <canvas id="skillsChart" width="400" height="200"></canvas>
                 </div>
-
-                <h2 class="animate-on-scroll">Graphique des compétences</h2>
-                <canvas id="skillsChart" class="animate-on-scroll"></canvas>
 
                 <h2 class="animate-on-scroll">Références</h2>
                 <p class="animate-on-scroll">Disponibles sur demande</p>
@@ -454,10 +389,24 @@
         </div>
     </div>
 
+    <nav class="floating-nav">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#education">Formation</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+        </ul>
+    </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init();
+
         // Animation des barres de compétences
         document.addEventListener('DOMContentLoaded', function() {
             const skillBars = document.querySelectorAll('.skill-level');
@@ -472,33 +421,46 @@
         // Toggle mode sombre
         document.getElementById('darkModeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
+            updateButtonStyles();
+            updateChart();
         });
 
-        // Graphique des compétences
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
-                datasets: [{
-                    label: 'Compétences',
-                    data: [95, 90, 95, 90, 95, 85],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-                }]
-            },
-            options: {
-                scale: {
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100
-                    }
-                }
-            }
+        function updateButtonStyles() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            document.querySelectorAll('.btn-custom').forEach(button => {
+                button.style.backgroundColor = isDarkMode ? '#2980b9' : '#3498db';
+                button.style.color = isDarkMode ? '#ecf0f1' : '#fff';
+            });
+        }
+
+        // Téléchargement PDF optimisé
+        document.getElementById('downloadPDF').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                unit: 'pt',
+                format: 'a4'
+            });
+            
+            html2canvas(document.querySelector('.cv-container'), {
+                scale: 2,
+                useCORS: true,
+                logging: false,
+                allowTaint: true
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 0.7);
+                const imgWidth = doc.internal.pageSize.getWidth();
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                
+                doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
+                doc.save('CV_Justine_Colombari.pdf');
+            });
+        });
+
+        // Partage par email
+        document.getElementById('shareEmail').addEventListener('click', function() {
+            const subject = encodeURIComponent("CV de Justine Colombari");
+            const body = encodeURIComponent("Voici le lien vers mon CV en ligne : " + window.location.href);
+            window.location.href = `mailto:?subject=${subject}&body=${body}`;
         });
 
         // Animation au défilement
@@ -524,31 +486,45 @@
         window.addEventListener('scroll', handleScroll);
         handleScroll(); // Vérifier les éléments visibles au chargement initial
 
-        // Téléchargement PDF
-        document.getElementById('downloadPDF').addEventListener('click', function() {
-            const element = document.body;
-            const opt = {
-                margin:       1,
-                filename:     'CV_Justine_Colombari.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
+        // Graphique des compétences
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        let myChart;
 
-            // New Promise-based usage:
-            html2pdf().set(opt).from(element).save();
-        });
-
-        // Navigation fluide
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        function createChart() {
+            myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
+                    datasets: [{
+                        label: 'Compétences',
+                        data: [95, 90, 95, 90, 95, 85],
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        borderColor: 'rgba(52, 152, 219, 1)',
+                        pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+                    }]
+                },
+                options: {
+                    scale: {
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
             });
-        });
+        }
+
+        function updateChart() {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            myChart.data.datasets[0].backgroundColor = isDarkMode ? 'rgba(41, 128, 185, 0.2)' : 'rgba(52, 152, 219, 0.2)';
+            myChart.data.datasets[0].borderColor = isDarkMode ? 'rgba(41, 128, 185, 1)' : 'rgba(52, 152, 219, 1)';
+            myChart.update();
+        }
+
+        createChart();
     </script>
 </body>
 </html>
