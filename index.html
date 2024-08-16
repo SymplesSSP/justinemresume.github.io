@@ -676,18 +676,18 @@
         let myChart = new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
-                datasets: [{
-                    label: 'Niveau de compétence',
-                    data: [95, 93, 94, 92, 95, 90],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-                }]
-            },
+    labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
+    datasets: [{
+        label: 'Niveau de compétence',
+        data: [98, 95, 97, 95, 98, 90],  // Mise à jour des valeurs
+        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+        borderColor: 'rgba(52, 152, 219, 1)',
+        pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+    }]
+},
             options: {
                 scale: {
                     ticks: {
