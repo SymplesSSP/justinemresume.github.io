@@ -42,24 +42,24 @@
         }
         
         .profile-photo {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 4px solid #fff;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        margin-bottom: 20px;
-    }
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
 
-    .header-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 50px 0;
-        text-align: center;
-        color: #fff;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
 
         .left-column {
             background-color: var(--primary-color);
@@ -117,6 +117,24 @@
             padding: 10px;
             border-radius: 10px;
             z-index: 1000;
+            transition: right 0.3s ease;
+        }
+
+        .floating-nav.collapsed {
+            right: -150px;
+        }
+
+        .floating-nav-toggle {
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px 0 0 5px;
+            cursor: pointer;
         }
 
         .expertise-item, .experience-item {
@@ -306,16 +324,26 @@
             top: -9999px;
             visibility: hidden;
         }
+
+        .hidden-info {
+            filter: blur(5px);
+            transition: filter 0.3s ease;
+        }
+
+        .hidden-info:hover,
+        .hidden-info:focus {
+            filter: blur(0);
+        }
     </style>
 </head>
 <body>
     <div id="tsparticles"></div>
 
     <div class="header-content">
-    <img src="https://media.licdn.com/dms/image/v2/D4D35AQH4vIgap7coWA/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1723725792244?e=1724396400&v=beta&t=tbK3Qju-a5i1cRdhr2hW9nl0YsTPILWpOTjsgQ6FISA" alt="Justine Colombari" class="profile-photo">
-    <h1 class="animate__animated animate__fadeInDown">JUSTINE COLOMBARI</h1>
-    <p class="animate__animated animate__fadeIn">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
-</div>
+        <img src="https://media.licdn.com/dms/image/v2/D4D35AQH4vIgap7coWA/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1723725792244?e=1724396400&v=beta&t=tbK3Qju-a5i1cRdhr2hW9nl0YsTPILWpOTjsgQ6FISA" alt="Justine Colombari" class="profile-photo">
+        <h1 class="animate__animated animate__fadeInDown">JUSTINE COLOMBARI</h1>
+        <p class="animate__animated animate__fadeIn">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
+    </div>
 
     <div class="container-fluid">
         <div class="row">
@@ -326,33 +354,33 @@
             </div>
         </div>
         <div class="cv-container row">
-            <div class="col-md-4 left-column">
+            <div id="about" class="col-md-4 left-column">
                 <h2 class="animate__animated animate__fadeIn">À PROPOS DE MOI</h2>
                 <p>Acheteuse chevronnée avec 13 ans d'expertise dans le e-commerce, je suis à la recherche d'un nouveau défi pour consolider mes compétences. Ma carrière est marquée par une progression constante et une maîtrise approfondie des enjeux spécifiques au secteur du commerce en ligne.</p>
                 
                 <h2 class="animate__animated animate__fadeIn">COMPÉTENCES PRINCIPALES</h2>
                 <p>Facturation</p>
-                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="98"></div></div>
                 <p>Gestion de la relation avec les fournisseurs</p>
-                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="97"></div></div>
                 <p>Gestion des achats</p>
-                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="98"></div></div>
                 <p>Gestion des stocks</p>
-                <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
                 <p>Produits Sage</p>
-                <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
             </div>
             <div class="col-md-8 right-column">
                 <div class="contact-info animate__animated animate__fadeIn">
                     <p><i class="fas fa-map-marker-alt"></i> Metz, Grand Est, France</p>
-                    <p><i class="fas fa-envelope"></i> justine.colombari@email.com</p>
-                    <p><i class="fas fa-phone"></i> +33 6 XX XX XX XX</p>
+                    <p class="hidden-info" tabindex="0"><i class="fas fa-envelope"></i> <span class="blur-text">justine.colombari@email.com</span></p>
+                    <p class="hidden-info" tabindex="0"><i class="fas fa-phone"></i> <span class="blur-text">+33 6 XX XX XX XX</span></p>
                 </div>
 
                 <h2 class="animate-on-scroll">Objectifs</h2>
                 <p class="animate-on-scroll">À l'écoute de nouvelles opportunités pour des postes d'Assistant commercial, Achats, Acheteur et Spécialiste des achats.</p>
 
-                <h2 class="animate-on-scroll">Expertise</h2>
+                <h2 id="expertise" class="animate-on-scroll">Expertise</h2>
                 <div class="expertise-item animate-on-scroll" data-aos="fade-up">
                     <h3><i class="fas fa-shopping-cart"></i> Expertise en E-commerce :</h3>
                     <ul>
@@ -390,7 +418,7 @@
                     </ul>
                 </div>
 
-                <h2 class="animate-on-scroll">Expérience professionnelle</h2>
+                <h2 id="experience" class="animate-on-scroll">Expérience professionnelle</h2>
                 <div class="timeline">
                     <div class="timeline-item right">
                         <div class="experience-item animate-on-scroll" data-aos="fade-left">
@@ -460,7 +488,7 @@
                     <canvas id="skillsChart" width="400" height="200"></canvas>
                 </div>
 
-                <h2 class="animate-on-scroll">Recommandations</h2>
+                <h2 id="recommendations" class="animate-on-scroll">Recommandations</h2>
                 <div id="recommendationsCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -511,7 +539,22 @@
                                 <p>"Je travaille avec Justine depuis des années, et je peux attester de son sérieux, sa rigueur et son adaptabilité. Il est possible de compter sur elle a tout moment. Sa réactivité et son efficacité sont plus qu'appréciables en tant que fournisseur. Elle est de plus, très agréable à côtoyer, ce qui ne gâche rien."</p>
                             </div>
                         </div>
-                        <!-- Les autres éléments du carrousel restent inchangés -->
+                        <div class="carousel-item">
+                            <div class="recommendation-card">
+                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQG3NJU742-uDw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682966407391?e=1729123200&v=beta&t=rwtwZeojCOgExt6cZiuZo_eT7lJHgOl9pHWMHFNcHLw" class="recommendation-img" alt="Demis COURQUET-LESAULNIER">
+                                <h4>Demis COURQUET-LESAULNIER</h4>
+                                <p>Directeur artistique & Chargé de stratégie et développement chez NOIR DE MONDE stores</p>
+                                <p>"Pendant 4 années j'ai eu la chance de travailler en collaboration avec Justine. Sur le terrain des compétences, il n'y a pas débat possible, c'est une personne incroyable aux vues des outils et tâches qu'elle maîtrise avec brio. Consciencieuse, appliquée, investie, elle est également cette personne rare qui n'abandonne pas et va, sans relâche, continuer à chercher des solutions lorsque nécessaire. Sur le plan humain et relationnel, elle rayonne et fait l'unanimité auprès de tous, y compris clients et fournisseurs. C'est une personne digne de toute confiance et c'est tout naturellement que je la recommande."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="recommendation-card">
+                                <img src="https://media.licdn.com/dms/image/D4E03AQGrCjIeG53YVw/profile-displayphoto-shrink_100_100/0/1681663800367?e=1729123200&v=beta&t=d5GryWnIv9yX-qEdpZ5zoSiNs62c1ZX5qdDa6xUp4_o" class="recommendation-img" alt="Andre Montero">
+                                <h4>Andre Montero</h4>
+                                <p>Responsable grands comptes chez Digit Access</p>
+                                <p>"Bonjour je suis responsable compte clé et fournisseur pour Digit Photo avec qui je travaille depuis près de 10 ans Justine est une de mes interlocutrices que j'ai au moins deux à trois fois par semaine Elle est efficace et disponible et c'est ce que nous demandons à nos sociétés partenaires avec qui nous travaillons. D'une humeur agréable et constante , elle gère mes gammes de produits avec un très grand professionnalisme"</p>
+                            </div>
+                        </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -527,12 +570,16 @@
     </div>
 
     <nav class="floating-nav">
+        <button class="floating-nav-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </button>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
             <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
             <li class="nav-item"><a class="nav-link" href="#experience">Expérience</a></li>
             <li class="nav-item"><a class="nav-link" href="#education">Formation</a></li>
             <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+            <li class="nav-item"><a class="nav-link" href="#recommendations">Recommandations</a></li>
         </ul>
     </nav>
 
@@ -540,7 +587,6 @@
     <div class="seo-keywords">
         e-commerce, achats, gestion de commandes, optimisation des stocks, relation fournisseurs, Sage, stratégie d'approvisionnement, commerce en ligne, assistante commerciale, gestion de projet, négociation, analyse de données, veille concurrentielle, ERP, CRM, KPI, facturation, logistique
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
@@ -562,16 +608,37 @@
 
         // Téléchargement PDF optimisé
         document.getElementById('downloadPDF').addEventListener('click', function() {
-            const element = document.querySelector('.cv-container');
-            const opt = {
-                margin:       10,
-                filename:     'CV_Justine_Colombari.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'mm', 'a4');
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 10;
+
+            const captureAndAddPage = (element, index) => {
+                return html2canvas(element, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    allowTaint: true
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/jpeg', 0.8);
+                    if (index > 0) doc.addPage();
+                    const imgWidth = pageWidth - 2 * margin;
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    doc.addImage(imgData, 'JPEG', margin, margin, imgWidth, imgHeight, '', 'FAST');
+                });
             };
 
-            html2pdf().set(opt).from(element).save();
+            const elements = [
+                document.querySelector('.header-content'),
+                document.querySelector('.left-column'),
+                document.querySelector('.right-column')
+            ];
+
+            Promise.all(elements.map(captureAndAddPage))
+                .then(() => {
+                    doc.save('CV_Justine_Colombari.pdf');
+                });
         });
 
         // Partage par email
@@ -611,8 +678,8 @@
             data: {
                 labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
                 datasets: [{
-                    label: 'Compétences',
-                    data: [95, 90, 95, 90, 95, 85],
+                    label: 'Niveau de compétence',
+                    data: [95, 93, 94, 92, 95, 90],
                     backgroundColor: 'rgba(52, 152, 219, 0.2)',
                     borderColor: 'rgba(52, 152, 219, 1)',
                     pointBackgroundColor: 'rgba(52, 152, 219, 1)',
@@ -625,7 +692,23 @@
                 scale: {
                     ticks: {
                         beginAtZero: true,
-                        max: 100
+                        max: 100,
+                        stepSize: 20,
+                        callback: function(value) {
+                            switch(value) {
+                                case 20: return 'Débutant';
+                                case 40: return 'Intermédiaire';
+                                case 60: return 'Avancé';
+                                case 80: return 'Expert';
+                                case 100: return 'Maître';
+                                default: return '';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 }
             }
@@ -706,6 +789,23 @@
                 interval: 5000,
                 wrap: true
             });
+        });
+
+        // Masquer/démasquer les informations de contact
+        document.querySelectorAll('.hidden-info').forEach(item => {
+            item.addEventListener('click', event => {
+                event.currentTarget.classList.toggle('blur-text');
+            });
+        });
+
+        // Menu flottant rabattable
+        const floatingNav = document.querySelector('.floating-nav');
+        const floatingNavToggle = document.querySelector('.floating-nav-toggle');
+
+        floatingNavToggle.addEventListener('click', () => {
+            floatingNav.classList.toggle('collapsed');
+            floatingNavToggle.querySelector('i').classList.toggle('fa-chevron-right');
+            floatingNavToggle.querySelector('i').classList.toggle('fa-chevron-left');
         });
     </script>
 </body>
