@@ -3,33 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV de Justine Colombari - Spécialiste e-commerce</title>
-    <meta name="description" content="CV en ligne de Justine Colombari, spécialiste e-commerce avec 13 ans d'expérience dans les achats et la gestion de commandes.">
-    <meta name="keywords" content="CV, Justine Colombari, e-commerce, achats, gestion de commandes, facturation">
+    <title>Justine Colombari - Spécialiste E-commerce | Acheteuse Expérimentée</title>
+    <meta name="description" content="CV de Justine Colombari, experte en e-commerce avec 13 ans d'expérience dans les achats, la gestion de commandes et l'optimisation des stocks pour le commerce en ligne.">
+    <meta name="keywords" content="Justine Colombari, e-commerce, achats, gestion de commandes, optimisation des stocks, relation fournisseurs, Sage, stratégie d'approvisionnement, commerce en ligne">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
     <style>
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
+            --accent-color: #e74c3c;
             --text-color: #333;
             --bg-color: #f0f0f0;
             --button-bg: #3498db;
             --button-text: #fff;
             --timeline-color: #34495e;
-        }
-
-        .dark-mode {
-            --primary-color: #1a2530;
-            --secondary-color: #2980b9;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --button-bg: #2980b9;
-            --button-text: #ecf0f1;
-            --timeline-color: #ecf0f1;
         }
 
         body {
@@ -241,13 +234,37 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        #tsparticles {
+            position: absolute;
+            width: 100%;
+            height: 300px;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body>
+    <div id="tsparticles"></div>
+
+    <div class="header-content">
+        <h1 class="animate__animated animate__fadeInDown">JUSTINE COLOMBARI</h1>
+        <p class="animate__animated animate__fadeIn">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
+    </div>
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mt-3">
-                <button id="darkModeToggle" class="btn btn-custom">Mode Sombre</button>
                 <button id="printCV" class="btn btn-custom" onclick="window.print()">Imprimer CV</button>
                 <button id="downloadPDF" class="btn btn-custom">Télécharger PDF</button>
                 <button id="shareEmail" class="btn btn-custom">Partager par Email</button>
@@ -271,8 +288,6 @@
                 <div class="skill-bar"><div class="skill-level" data-level="90"></div></div>
             </div>
             <div class="col-md-8 right-column">
-                <h1 class="animate__animated animate__fadeInDown">JUSTINE COLOMBARI</h1>
-                <p class="animate__animated animate__fadeIn">Spécialiste e-commerce : Achats, Gestion de Commandes et Facturation | Orientée Solutions & Relations Fournisseurs</p>
                 <div class="contact-info animate__animated animate__fadeIn">
                     <p><i class="fas fa-map-marker-alt"></i> Metz, Grand Est, France</p>
                     <p><i class="fas fa-envelope"></i> justine.colombari@email.com</p>
@@ -318,7 +333,8 @@
                         <li>Mise en place de processus d'achat innovants adaptés aux défis du e-commerce</li>
                         <li>Capacité à travailler dans un environnement dynamique et en évolution rapide</li>
                     </ul>
-                </div>
+                    
+                    </div>
 
                 <h2 class="animate-on-scroll">Expérience professionnelle</h2>
                 <div class="timeline">
@@ -418,42 +434,18 @@
             });
         });
 
-        // Toggle mode sombre
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            updateButtonStyles();
-            updateChart();
-        });
-
-        function updateButtonStyles() {
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            document.querySelectorAll('.btn-custom').forEach(button => {
-                button.style.backgroundColor = isDarkMode ? '#2980b9' : '#3498db';
-                button.style.color = isDarkMode ? '#ecf0f1' : '#fff';
-            });
-        }
-
         // Téléchargement PDF optimisé
         document.getElementById('downloadPDF').addEventListener('click', function() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF({
-                unit: 'pt',
-                format: 'a4'
-            });
-            
-            html2canvas(document.querySelector('.cv-container'), {
-                scale: 2,
-                useCORS: true,
-                logging: false,
-                allowTaint: true
-            }).then(canvas => {
-                const imgData = canvas.toDataURL('image/jpeg', 0.7);
-                const imgWidth = doc.internal.pageSize.getWidth();
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                
-                doc.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
-                doc.save('CV_Justine_Colombari.pdf');
-            });
+            const element = document.querySelector('.cv-container');
+            const opt = {
+                margin:       10,
+                filename:     'CV_Justine_Colombari.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
         });
 
         // Partage par email
@@ -488,43 +480,99 @@
 
         // Graphique des compétences
         const ctx = document.getElementById('skillsChart').getContext('2d');
-        let myChart;
-
-        function createChart() {
-            myChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
-                    datasets: [{
-                        label: 'Compétences',
-                        data: [95, 90, 95, 90, 95, 85],
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        borderColor: 'rgba(52, 152, 219, 1)',
-                        pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-                    }]
-                },
-                options: {
-                    scale: {
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100
-                        }
+        let myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
+                datasets: [{
+                    label: 'Compétences',
+                    data: [95, 90, 95, 90, 95, 85],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+                }]
+            },
+            options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100
                     }
                 }
-            });
-        }
+            }
+        });
 
-        function updateChart() {
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            myChart.data.datasets[0].backgroundColor = isDarkMode ? 'rgba(41, 128, 185, 0.2)' : 'rgba(52, 152, 219, 0.2)';
-            myChart.data.datasets[0].borderColor = isDarkMode ? 'rgba(41, 128, 185, 1)' : 'rgba(52, 152, 219, 1)';
-            myChart.update();
-        }
-
-        createChart();
+        // Animation de particules
+        tsParticles.load("tsparticles", {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#3498db"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#3498db",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
     </script>
 </body>
 </html>
