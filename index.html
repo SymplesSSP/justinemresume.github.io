@@ -252,6 +252,40 @@
             color: #fff;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
+
+        .recommendation-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recommendation-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #3498db;
+            border-radius: 50%;
+        }
+
+        .seo-keywords {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -333,8 +367,7 @@
                         <li>Mise en place de processus d'achat innovants adaptés aux défis du e-commerce</li>
                         <li>Capacité à travailler dans un environnement dynamique et en évolution rapide</li>
                     </ul>
-                    
-                    </div>
+                </div>
 
                 <h2 class="animate-on-scroll">Expérience professionnelle</h2>
                 <div class="timeline">
@@ -399,8 +432,36 @@
                     <canvas id="skillsChart" width="400" height="200"></canvas>
                 </div>
 
-                <h2 class="animate-on-scroll">Références</h2>
-                <p class="animate-on-scroll">Disponibles sur demande</p>
+                <h2 class="animate-on-scroll">Recommandations</h2>
+                <div id="recommendationsCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="recommendation-card">
+                                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGshl6tfzKEPQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638349581695?e=1729123200&v=beta&t=_0TdAlgHc9anlMZHTOfgK_72qiL15y-zAE63SK_cZK8" class="recommendation-img" alt="Xavier CASTELA">
+                                <h4>Xavier CASTELA</h4>
+                                <p>Directeur Vendors / Achat - CMS Distribution France</p>
+                                <p>"En tant que fournisseur, j'ai toujours apprécié le professionnalisme et le sens commercial de Justine. Proactive et rigoureuse, elle a toujours su trouver des solutions avec efficacité pour développer notre activité avec Digit Photo."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="recommendation-card">
+                                <img src="https://media.licdn.com/dms/image/D5603AQFXKIY00jb_dg/profile-displayphoto-shrink_100_100/0/1683558076866?e=1729123200&v=beta&t=xDRFeitBnQVv2JBLGi-qfYZk5Kvn_ycycWIkmOOg_10" class="recommendation-img" alt="Magali Tifiou">
+                                <h4>Magali Tifiou</h4>
+                                <p>Cadre commercial</p>
+                                <p>"Je travaille avec Justine depuis des années, et je peux attester de son sérieux, sa rigueur et son adaptabilité. Il est possible de compter sur elle a tout moment. Sa réactivité et son efficacité sont plus qu'appréciables en tant que fournisseur. Elle est de plus, très agréable à côtoyer, ce qui ne gâche rien."</p>
+                            </div>
+                        </div>
+                        <!-- Ajoutez les autres éléments du carrousel de la même manière -->
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Précédent</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Suivant</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -414,6 +475,11 @@
             <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
         </ul>
     </nav>
+
+    <!-- Mots-clés SEO cachés -->
+    <div class="seo-keywords">
+        e-commerce, achats, gestion de commandes, optimisation des stocks, relation fournisseurs, Sage, stratégie d'approvisionnement, commerce en ligne, assistante commerciale, gestion de projet, négociation, analyse de données, veille concurrentielle, ERP, CRM, KPI, facturation, logistique
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
@@ -572,6 +638,14 @@
                 }
             },
             retina_detect: true
+        });
+
+        // Initialisation du carrousel
+        document.addEventListener('DOMContentLoaded', function() {
+            new bootstrap.Carousel(document.querySelector('#recommendationsCarousel'), {
+                interval: 5000,
+                wrap: true
+            });
         });
     </script>
 </body>
