@@ -634,48 +634,57 @@
         handleScroll(); // Vérifier les éléments visibles au chargement initial
 
         // Graphique des compétences
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        let myChart = new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
-                datasets: [{
-                    label: 'Niveau de compétence',
-                    data: [98, 95, 97, 95, 98, 90],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: 'rgba(52, 152, 219, 1)',
-                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-                }]
-            },
-            options: {
-                scale: {
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        stepSize: 20,
-                        callback: function(value) {
-                            switch(value) {
-                                case 20: return 'Débutant';
-                                case 40: return 'Intermédiaire';
-                                case 60: return 'Avancé';
-                                case 80: return 'Expert';
-                                case 100: return 'Maître';
-                                default: return '';
-                            }
-                        }
-                    }
+const ctx = document.getElementById('skillsChart').getContext('2d');
+let myChart = new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
+        datasets: [{
+            label: 'Niveau de compétence',
+            data: [98, 95, 97, 95, 98, 92],
+            backgroundColor: 'rgba(52, 152, 219, 0.2)',
+            borderColor: 'rgba(52, 152, 219, 1)',
+            pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                angleLines: {
+                    display: false
                 },
-                plugins: {
-                    legend: {
-                        display: false
+                suggestedMin: 80,
+                suggestedMax: 100,
+                ticks: {
+                    stepSize: 5,
+                    callback: function(value, index, values) {
+                        return value + '%';
                     }
                 }
             }
-        });
-
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        return context.parsed.r + '%';
+                    }
+                }
+            }
+        },
+        elements: {
+            line: {
+                borderWidth: 3
+            }
+        }
+    }
+});
         // Animation de particules
         tsParticles.load("tsparticles", {
             particles: {
