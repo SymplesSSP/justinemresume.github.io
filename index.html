@@ -28,6 +28,8 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 16px;
+            line-height: 1.6;
         }
 
         .cv-container {
@@ -104,6 +106,10 @@
         .btn-custom:hover {
             opacity: 0.9;
             transform: translateY(-2px);
+        }
+
+        .btn-custom:focus {
+            outline: 2px solid var(--secondary-color);
         }
 
         .floating-nav {
@@ -224,6 +230,9 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
             .cv-container {
                 margin: 10px;
             }
@@ -333,6 +342,30 @@
             filter: blur(0);
         }
     </style>
+    <style media="print">
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            margin: 1cm;
+        }
+        .no-print {
+            display: none !important;
+        }
+        .cv-container {
+            box-shadow: none;
+        }
+        #tsparticles, .floating-nav, .btn-custom {
+            display: none;
+        }
+        .timeline::after {
+            display: none;
+        }
+        .timeline-item {
+            page-break-inside: avoid;
+        }
+    </style>
 </head>
 <body>
     <div id="tsparticles"></div>
@@ -345,10 +378,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 text-center mt-3">
-                <button id="printCV" class="btn btn-custom" onclick="window.print()">Imprimer CV</button>
-                <a href="https://drive.google.com/file/d/1exjbvR8VSjZVKIKw5eyzLflt6C9YCvbQ/view?usp=sharing" class="btn btn-custom" target="_blank" rel="noopener noreferrer">Télécharger PDF</a>
-                <button id="shareEmail" class="btn btn-custom">Partager par Email</button>
+            <div class="col-12 text-center mt-3 no-print">
+                <button id="printCV" class="btn btn-custom" aria-label="Imprimer le CV">Imprimer CV</button>
+                <a href="https://drive.google.com/file/d/1exjbvR8VSjZVKIKw5eyzLflt6C9YCvbQ/view?usp=sharing" class="btn btn-custom" target="_blank" rel="noopener noreferrer" aria-label="Télécharger le CV en PDF">Télécharger PDF</a>
+                <button id="shareEmail" class="btn btn-custom" aria-label="Partager le CV par email">Partager par Email</button>
             </div>
         </div>
         <div class="cv-container row">
@@ -358,21 +391,21 @@
                 
                 <h2 class="animate__animated animate__fadeIn">COMPÉTENCES PRINCIPALES</h2>
                 <p>Facturation</p>
-                <div class="skill-bar"><div class="skill-level" data-level="98"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="98" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div></div>
                 <p>Gestion de la relation avec les fournisseurs</p>
-                <div class="skill-bar"><div class="skill-level" data-level="97"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="97" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100"></div></div>
                 <p>Gestion des achats</p>
-                <div class="skill-bar"><div class="skill-level" data-level="98"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="98" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div></div>
                 <p>Gestion des stocks</p>
-                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="95" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
                 <p>Produits Sage</p>
-                <div class="skill-bar"><div class="skill-level" data-level="95"></div></div>
+                <div class="skill-bar"><div class="skill-level" data-level="95" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div></div>
             </div>
             <div class="col-md-8 right-column">
                 <div class="contact-info animate__animated animate__fadeIn">
-                    <p><i class="fas fa-map-marker-alt"></i> Metz, Grand Est, France</p>
-                    <p class="hidden-info" tabindex="0"><i class="fas fa-envelope"></i> <span class="blur-text">justinemotard@gmail.com</span></p>
-                    <p class="hidden-info" tabindex="0"><i class="fas fa-phone"></i> <span class="blur-text">+33 6 30 00 18 49</span></p>
+                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Metz, Grand Est, France</p>
+                    <p class="hidden-info" tabindex="0"><i class="fas fa-envelope" aria-hidden="true"></i> <span class="blur-text">justinemotard@gmail.com</span></p>
+                    <p class="hidden-info" tabindex="0"><i class="fas fa-phone" aria-hidden="true"></i> <span class="blur-text">+33 6 30 00 18 49</span></p>
                 </div>
 
                 <h2 class="animate-on-scroll">Objectifs</h2>
@@ -380,7 +413,7 @@
 
                 <h2 id="expertise" class="animate-on-scroll">Expertise</h2>
                 <div class="expertise-item animate-on-scroll" data-aos="fade-up">
-                    <h3><i class="fas fa-shopping-cart"></i> Expertise en E-commerce :</h3>
+                    <h3><i class="fas fa-shopping-cart" aria-hidden="true"></i> Expertise en E-commerce :</h3>
                     <ul>
                         <li>Gestion stratégique des approvisionnements pour des plateformes de vente en ligne</li>
                         <li>Optimisation des stocks adaptée aux fluctuations rapides du marché digital</li>
@@ -389,7 +422,7 @@
                     </ul>
                 </div>
                 <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="100">
-                    <h3><i class="fas fa-handshake"></i> Compétences Clés en Achat :</h3>
+                    <h3><i class="fas fa-handshake" aria-hidden="true"></i> Compétences Clés en Achat :</h3>
                     <ul>
                         <li>Développement et maintien de relations durables avec les fournisseurs internationaux</li>
                         <li>Négociation efficace des prix et des conditions, adaptée au contexte du e-commerce</li>
@@ -398,7 +431,7 @@
                     </ul>
                 </div>
                 <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="200">
-                    <h3><i class="fas fa-chart-line"></i> Gestion Financière et Opérationnelle :</h3>
+                    <h3><i class="fas fa-chart-line" aria-hidden="true"></i> Gestion Financière et Opérationnelle :</h3>
                     <ul>
                         <li>Maîtrise avancée du logiciel SAGE et des outils ERP spécifiques au e-commerce</li>
                         <li>Optimisation des coûts d'achat et de logistique pour maximiser les marges</li>
@@ -407,7 +440,7 @@
                     </ul>
                 </div>
                 <div class="expertise-item animate-on-scroll" data-aos="fade-up" data-aos-delay="300">
-                    <h3><i class="fas fa-lightbulb"></i> Approche Analytique et Innovante :</h3>
+                    <h3><i class="fas fa-lightbulb" aria-hidden="true"></i> Approche Analytique et Innovante :</h3>
                     <ul>
                         <li>Veille technologique constante pour identifier les nouvelles opportunités produits</li>
                         <li>Analyse de données pour optimiser les stratégies d'achat et de stock</li>
@@ -415,7 +448,6 @@
                         <li>Capacité à travailler dans un environnement dynamique et en évolution rapide</li>
                     </ul>
                 </div>
-
                 <h2 id="experience" class="animate-on-scroll">Expérience professionnelle</h2>
                 <div class="timeline">
                     <div class="timeline-item right">
@@ -483,77 +515,94 @@
 
                 <h2 id="skills" class="animate-on-scroll">Compétences techniques</h2>
                 <div class="competences-grid animate-on-scroll">
-                    <canvas id="skillsChart" width="400" height="200"></canvas>
+                    <canvas id="skillsChart" width="400" height="200" aria-label="Graphique des compétences techniques" role="img"></canvas>
                 </div>
 
-                <h2 id="recommendations" class="animate-on-scroll">Recommandations</h2>
-                <div id="recommendationsCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGDnNaO9ctNUQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1703076888303?e=1729123200&v=beta&t=54JW7wPSlTtdxc-snx7KmNb7X6ajXPCq_2vDU3vOwVg" class="recommendation-img" alt="Le Verche Loïc">
-                                <h4>Le Verche Loïc</h4>
-                                <p>Responsable marketing chez ipln.fr</p>
-                                <p>"Je travaille avec Justine depuis plus de 3 ans. Sa rigueur de travail et la connaissance approfondie de son métier m'ont permis de recevoir une bonne formation du logiciel SAGE qu'elle maîtrise parfaitement. De plus, sa relation avec les fournisseurs est de grande qualité, toujours à l'écoute et force de propositions pour trouver une solution afin de satisfaire notre clientèle."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/D4E03AQHbgJVTa_C-bQ/profile-displayphoto-shrink_100_100/0/1715932470477?e=1729123200&v=beta&t=_uDBuIUmbkvkvPkyiqetTa-RnfbXtHtVF_QMfCOGVlw" class="recommendation-img" alt="Caroline Guerpillon-Schmitt">
-                                <h4>Caroline Guerpillon-Schmitt</h4>
-                                <p>Responsable Commerciale sédentaire B2B</p>
-                                <p>"Nous avons collaborer pendant plusieurs années avec Justine, j'étais son fournisseur, je la recommande pour son professionnalisme, sa rigueur, et son savoir être."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/v2/C5603AQHO_-Jy0qqyIw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1587810084174?e=1729123200&v=beta&t=YMiLltJ7WP5LLsBg7n5NdTi7WO_1d86alhstM8yMphQ" class="recommendation-img" alt="Guillaume Wilmin">
-                                <h4>Guillaume Wilmin</h4>
-                                <p>Expert en Développement e-Commerce | Spécialiste en Gestion de Projet et Stratégie Commerciale | Expert en Intelligence Artificielle</p>
-                                <p>"J'ai travaillé pendant près de 10 ans avec madame Colombari. Les qualificatifs qui la décrivent sont les suivants : sérieuse - impliquée - professionnelle - disponible - motivée ! J'ai été impressionné par sa faculté à gérer bon nombre de demandes et ceux malgré la pression. Ce fut un réel plaisir que de collaborer avec elle ! Elle sera un atout pour n'importe quelle entreprise."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFmKzs7cojD6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1675079301095?e=1729123200&v=beta&t=imCP7LwV0uQkCnNw0FI5IpxV_AHkgRceG2R6is8LTSI" class="recommendation-img" alt="Emmanuel FRIOT">
-                                <h4>Emmanuel FRIOT</h4>
-                                <p>Directeur des Ventes France - Sales Manager France at INTEGRAL EUROPE SARL</p>
-                                <p>"Justine a toujours été très efficace dans la gestion de nos commandes, ainsi que dans l'aide à la résolution des éventuels problèmes commerciaux que nous avons rencontrés. Sa bonne humeur a également contribué à une relation commerciale positive tout en restant très orientée pour atteindre le résultat que sa société attend d'elle à son poste."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-    <div class="recommendation-card">
-        <img src="https://media.licdn.com/dms/image/v2/C4D03AQGshl6tfzKEPQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638349581695?e=1729123200&v=beta&t=_0TdAlgHc9anlMZHTOfgK_72qiL15y-zAE63SK_cZK8" class="recommendation-img" alt="Xavier CASTELA">
-        <h4>Xavier CASTELA</h4>
-        <p>Directeur Vendors / Achat - CMS Distribution France</p>
-        <p>"En tant que fournisseur, j'ai toujours apprécié le professionnalisme et le sens commercial de Justine. Proactive et rigoureuse, elle a toujours su trouver des solutions avec efficacité pour développer notre activité avec Digit Photo."</p>
+                <<h2 id="recommendations" class="animate-on-scroll">Recommandations</h2>
+<div id="recommendationsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQGDnNaO9ctNUQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1703076888303?e=1729123200&v=beta&t=54JW7wPSlTtdxc-snx7KmNb7X6ajXPCq_2vDU3vOwVg" class="recommendation-img lazy" alt="Le Verche Loïc" data-src="https://media.licdn.com/dms/image/v2/D4E03AQGDnNaO9ctNUQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1703076888303?e=1729123200&v=beta&t=54JW7wPSlTtdxc-snx7KmNb7X6ajXPCq_2vDU3vOwVg">
+                <h4>Le Verche Loïc</h4>
+                <p>Responsable marketing chez ipln.fr</p>
+                <p>"Je travaille avec Justine depuis plus de 3 ans. Sa rigueur de travail et la connaissance approfondie de son métier m'ont permis de recevoir une bonne formation du logiciel SAGE qu'elle maîtrise parfaitement. De plus, sa relation avec les fournisseurs est de grande qualité, toujours à l'écoute et force de propositions pour trouver une solution afin de satisfaire notre clientèle."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/D4E03AQHbgJVTa_C-bQ/profile-displayphoto-shrink_100_100/0/1715932470477?e=1729123200&v=beta&t=_uDBuIUmbkvkvPkyiqetTa-RnfbXtHtVF_QMfCOGVlw" class="recommendation-img lazy" alt="Caroline Guerpillon-Schmitt" data-src="https://media.licdn.com/dms/image/D4E03AQHbgJVTa_C-bQ/profile-displayphoto-shrink_100_100/0/1715932470477?e=1729123200&v=beta&t=_uDBuIUmbkvkvPkyiqetTa-RnfbXtHtVF_QMfCOGVlw">
+                <h4>Caroline Guerpillon-Schmitt</h4>
+                <p>Responsable Commerciale sédentaire B2B</p>
+                <p>"Nous avons collaborer pendant plusieurs années avec Justine, j'étais son fournisseur, je la recommande pour son professionnalisme, sa rigueur, et son savoir être."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/C5603AQHO_-Jy0qqyIw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1587810084174?e=1729123200&v=beta&t=YMiLltJ7WP5LLsBg7n5NdTi7WO_1d86alhstM8yMphQ" class="recommendation-img lazy" alt="Guillaume Wilmin" data-src="https://media.licdn.com/dms/image/v2/C5603AQHO_-Jy0qqyIw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1587810084174?e=1729123200&v=beta&t=YMiLltJ7WP5LLsBg7n5NdTi7WO_1d86alhstM8yMphQ">
+                <h4>Guillaume Wilmin</h4>
+                <p>Expert en Développement e-Commerce | Spécialiste en Gestion de Projet et Stratégie Commerciale | Expert en Intelligence Artificielle</p>
+                <p>"J'ai travaillé pendant près de 10 ans avec madame Colombari. Les qualificatifs qui la décrivent sont les suivants : sérieuse - impliquée - professionnelle - disponible - motivée ! J'ai été impressionné par sa faculté à gérer bon nombre de demandes et ceux malgré la pression. Ce fut un réel plaisir que de collaborer avec elle ! Elle sera un atout pour n'importe quelle entreprise."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFmKzs7cojD6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1675079301095?e=1729123200&v=beta&t=imCP7LwV0uQkCnNw0FI5IpxV_AHkgRceG2R6is8LTSI" class="recommendation-img lazy" alt="Emmanuel FRIOT" data-src="https://media.licdn.com/dms/image/v2/D4E03AQFmKzs7cojD6g/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1675079301095?e=1729123200&v=beta&t=imCP7LwV0uQkCnNw0FI5IpxV_AHkgRceG2R6is8LTSI">
+                <h4>Emmanuel FRIOT</h4>
+                <p>Directeur des Ventes France - Sales Manager France at INTEGRAL EUROPE SARL</p>
+                <p>"Justine a toujours été très efficace dans la gestion de nos commandes, ainsi que dans l'aide à la résolution des éventuels problèmes commerciaux que nous avons rencontrés. Sa bonne humeur a également contribué à une relation commerciale positive tout en restant très orientée pour atteindre le résultat que sa société attend d'elle à son poste."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/C4D03AQGshl6tfzKEPQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638349581695?e=1729123200&v=beta&t=_0TdAlgHc9anlMZHTOfgK_72qiL15y-zAE63SK_cZK8" class="recommendation-img lazy" alt="Xavier CASTELA" data-src="https://media.licdn.com/dms/image/v2/C4D03AQGshl6tfzKEPQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1638349581695?e=1729123200&v=beta&t=_0TdAlgHc9anlMZHTOfgK_72qiL15y-zAE63SK_cZK8">
+                <h4>Xavier CASTELA</h4>
+                <p>Directeur Vendors / Achat - CMS Distribution France</p>
+                <p>"En tant que fournisseur, j'ai toujours apprécié le professionnalisme et le sens commercial de Justine. Proactive et rigoureuse, elle a toujours su trouver des solutions avec efficacité pour développer notre activité avec Digit Photo."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/D5603AQFXKIY00jb_dg/profile-displayphoto-shrink_100_100/0/1683558076866?e=1729123200&v=beta&t=xDRFeitBnQVv2JBLGi-qfYZk5Kvn_ycycWIkmOOg_10" class="recommendation-img lazy" alt="Magali Tifiou" data-src="https://media.licdn.com/dms/image/D5603AQFXKIY00jb_dg/profile-displayphoto-shrink_100_100/0/1683558076866?e=1729123200&v=beta&t=xDRFeitBnQVv2JBLGi-qfYZk5Kvn_ycycWIkmOOg_10">
+                <h4>Magali Tifiou</h4>
+                <p>Cadre commercial</p>
+                <p>"Je travaille avec Justine depuis des années, et je peux attester de son sérieux, sa rigueur et son adaptabilité. Il est possible de compter sur elle a tout moment. Sa réactivité et son efficacité sont plus qu'appréciables en tant que fournisseur. Elle est de plus, très agréable à côtoyer, ce qui ne gâche rien."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQG3NJU742-uDw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682966407391?e=1729123200&v=beta&t=rwtwZeojCOgExt6cZiuZo_eT7lJHgOl9pHWMHFNcHLw" class="recommendation-img lazy" alt="Demis COURQUET-LESAULNIER" data-src="https://media.licdn.com/dms/image/v2/D4E03AQG3NJU742-uDw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682966407391?e=1729123200&v=beta&t=rwtwZeojCOgExt6cZiuZo_eT7lJHgOl9pHWMHFNcHLw">
+                <h4>Demis COURQUET-LESAULNIER</h4>
+                <p>Directeur artistique & Chargé de stratégie et développement chez NOIR DE MONDE stores</p>
+                <p>"Pendant 4 années j'ai eu la chance de travailler en collaboration avec Justine. Sur le terrain des compétences, il n'y a pas débat possible, c'est une personne incroyable aux vues des outils et tâches qu'elle maîtrise avec brio. Consciencieuse, appliquée, investie, elle est également cette personne rare qui n'abandonne pas et va, sans relâche, continuer à chercher des solutions lorsque nécessaire. Sur le plan humain et relationnel, elle rayonne et fait l'unanimité auprès de tous, y compris clients et fournisseurs. C'est une personne digne de toute confiance et c'est tout naturellement que je la recommande."</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/D4E03AQGrCjIeG53YVw/profile-displayphoto-shrink_100_100/0/1681663800367?e=1729123200&v=beta&t=d5GryWnIv9yX-qEdpZ5zoSiNs62c1ZX5qdDa6xUp4_o" class="recommendation-img lazy" alt="Andre Montero" data-src="https://media.licdn.com/dms/image/D4E03AQGrCjIeG53YVw/profile-displayphoto-shrink_100_100/0/1681663800367?e=1729123200&v=beta&t=d5GryWnIv9yX-qEdpZ5zoSiNs62c1ZX5qdDa6xUp4_o">
+                <h4>Andre Montero</h4>
+                <p>Responsable grands comptes chez Digit Access</p>
+                <p>"Bonjour je suis responsable compte clé et fournisseur pour Digit Photo avec qui je travaille depuis près de 10 ans Justine est une de mes interlocutrices que j'ai au moins deux à trois fois par semaine Elle est efficace et disponible et c'est ce que nous demandons à nos sociétés partenaires avec qui nous travaillons. D'une humeur agréable et constante , elle gère mes gammes de produits avec un très grand professionnalisme"</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="recommendation-card">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQHof3FeQGQdwA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1692694010394?e=1729123200&v=beta&t=Oj2vP1_FxLjPXgikK8_ab46snpDmMvjoGTnXngOGnNk" class="recommendation-img lazy" alt="Cédric Nisi" data-src="https://media.licdn.com/dms/image/v2/D4E03AQHof3FeQGQdwA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1692694010394?e=1729123200&v=beta&t=Oj2vP1_FxLjPXgikK8_ab46snpDmMvjoGTnXngOGnNk">
+                <h4>Cédric Nisi</h4>
+                <p>Gestionnaire de Comptes Clients France, Belgique & Luxembourg chez Disnet Distributors</p>
+                <p>"J'ai eu la chance de travailler en collaboration avec Justine ces deux dernières années. Grâce à sa bonne gestion de relation avec les fournisseurs, sa rigueur et son professionnalisme, nous avons su entretenir une très bonne relation professionnelle."</p>
+            </div>
+        </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Suivant</span>
+    </button>
 </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/D5603AQFXKIY00jb_dg/profile-displayphoto-shrink_100_100/0/1683558076866?e=1729123200&v=beta&t=xDRFeitBnQVv2JBLGi-qfYZk5Kvn_ycycWIkmOOg_10" class="recommendation-img" alt="Magali Tifiou">
-                                <h4>Magali Tifiou</h4>
-                                <p>Cadre commercial</p>
-                                <p>"Je travaille avec Justine depuis des années, et je peux attester de son sérieux, sa rigueur et son adaptabilité. Il est possible de compter sur elle a tout moment. Sa réactivité et son efficacité sont plus qu'appréciables en tant que fournisseur. Elle est de plus, très agréable à côtoyer, ce qui ne gâche rien."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/v2/D4E03AQG3NJU742-uDw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1682966407391?e=1729123200&v=beta&t=rwtwZeojCOgExt6cZiuZo_eT7lJHgOl9pHWMHFNcHLw" class="recommendation-img" alt="Demis COURQUET-LESAULNIER">
-                                <h4>Demis COURQUET-LESAULNIER</h4>
-                                <p>Directeur artistique & Chargé de stratégie et développement chez NOIR DE MONDE stores</p>
-                                <p>"Pendant 4 années j'ai eu la chance de travailler en collaboration avec Justine. Sur le terrain des compétences, il n'y a pas débat possible, c'est une personne incroyable aux vues des outils et tâches qu'elle maîtrise avec brio. Consciencieuse, appliquée, investie, elle est également cette personne rare qui n'abandonne pas et va, sans relâche, continuer à chercher des solutions lorsque nécessaire. Sur le plan humain et relationnel, elle rayonne et fait l'unanimité auprès de tous, y compris clients et fournisseurs. C'est une personne digne de toute confiance et c'est tout naturellement que je la recommande."</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="recommendation-card">
-                                <img src="https://media.licdn.com/dms/image/D4E03AQGrCjIeG53YVw/profile-displayphoto-shrink_100_100/0/1681663800367?e=1729123200&v=beta&t=d5GryWnIv9yX-qEdpZ5zoSiNs62c1ZX5qdDa6xUp4_o" class="recommendation-img" alt="Andre Montero">
-                                <h4>Andre Montero</h4>
-                                <p>Responsable grands comptes chez Digit Access</p>
-                                <p>"Bonjour je suis responsable compte clé et fournisseur pour Digit Photo avec qui je travaille depuis près de 10 ans Justine est une de mes interlocutrices que j'ai au moins deux à trois fois par semaine Elle est efficace et disponible et c'est ce que nous demandons à nos sociétés partenaires avec qui nous travaillons. D'une humeur agréable et constante , elle gère mes gammes de produits avec un très grand professionnalisme"</p>
-                            </div>
-                        </div>
-                    </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#recommendationsCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Précédent</span>
@@ -567,9 +616,9 @@
         </div>
     </div>
 
-    <nav class="floating-nav">
-        <button class="floating-nav-toggle">
-            <i class="fas fa-chevron-right"></i>
+    <nav class="floating-nav no-print">
+        <button class="floating-nav-toggle" aria-label="Toggle navigation menu">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
         </button>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
@@ -634,57 +683,58 @@
         handleScroll(); // Vérifier les éléments visibles au chargement initial
 
         // Graphique des compétences
-const ctx = document.getElementById('skillsChart').getContext('2d');
-let myChart = new Chart(ctx, {
-    type: 'radar',
-    data: {
-        labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
-        datasets: [{
-            label: 'Niveau de compétence',
-            data: [98, 95, 97, 95, 98, 92],
-            backgroundColor: 'rgba(52, 152, 219, 0.2)',
-            borderColor: 'rgba(52, 152, 219, 1)',
-            pointBackgroundColor: 'rgba(52, 152, 219, 1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
-        }]
-    },
-    options: {
-        scales: {
-            r: {
-                angleLines: {
-                    display: false
-                },
-                suggestedMin: 80,
-                suggestedMax: 100,
-                ticks: {
-                    stepSize: 5,
-                    callback: function(value, index, values) {
-                        return value + '%';
-                    }
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        let myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Facturation', 'Gestion des stocks', 'Relation fournisseurs', 'Produits Sage', 'Gestion des achats', 'Microsoft Office'],
+                datasets: [{
+                    label: 'Niveau de compétence',
+                    data: [98, 95, 97, 95, 98, 92],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    pointBackgroundColor: 'rgba(52, 152, 219, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(52, 152, 219, 1)'
+                }]
             },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        return context.parsed.r + '%';
+            options: {
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: false
+                        },
+                        suggestedMin: 80,
+                        suggestedMax: 100,
+                        ticks: {
+                            stepSize: 5,
+                            callback: function(value, index, values) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed.r + '%';
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        borderWidth: 3
                     }
                 }
             }
-        },
-        elements: {
-            line: {
-                borderWidth: 3
-            }
-        }
-    }
-});
+        });
+        
         // Animation de particules
         tsParticles.load("tsparticles", {
             particles: {
@@ -720,6 +770,57 @@ let myChart = new Chart(ctx, {
                 event.currentTarget.classList.toggle('blur-text');
             });
         });
+
+        // Lazy loading des images
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+
+        // Optimisation de l'impression
+        document.getElementById('printCV').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.print();
+        });
+
+        // Amélioration de l'accessibilité pour le carrousel de recommandations
+        const carousel = document.getElementById('recommendationsCarousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+
+        items.forEach((item, index) => {
+            const itemHeading = item.querySelector('h4');
+            if (itemHeading) {
+                itemHeading.setAttribute('id', `recommendation-${index + 1}`);
+                item.setAttribute('aria-labelledby', `recommendation-${index + 1}`);
+            }
+        });
+
+        // Gestion des événements de focus pour améliorer la navigation au clavier
+        document.querySelectorAll('a, button, [tabindex]').forEach(el => {
+            el.addEventListener('focus', (event) => {
+                event.target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            });
+        });
+
     </script>
 </body>
 </html>
