@@ -379,8 +379,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center mt-3 no-print">
-                <button id="printCV" class="btn btn-custom" aria-label="Imprimer le CV">Imprimer CV</button>
-                <a href="https://drive.google.com/file/d/1exjbvR8VSjZVKIKw5eyzLflt6C9YCvbQ/view?usp=sharing" class="btn btn-custom" target="_blank" rel="noopener noreferrer" aria-label="Télécharger le CV en PDF">Télécharger PDF</a>
+                <a href="https://drive.google.com/file/d/1exjbvR8VSjZVKIKw5eyzLflt6C9YCvbQ/view?usp=sharing" id="downloadPrintCV" class="btn btn-custom" target="_blank" rel="noopener noreferrer" aria-label="Télécharger ou imprimer le CV en PDF">Télécharger/Imprimer CV</a>
                 <button id="shareEmail" class="btn btn-custom" aria-label="Partager le CV par email">Partager par Email</button>
             </div>
         </div>
@@ -785,9 +784,9 @@
         });
 
         // Optimisation de l'impression
-        document.getElementById('printCV').addEventListener('click', function(e) {
+        document.getElementById('downloadPrintCV').addEventListener('click', function(e) {
             e.preventDefault();
-            window.print();
+            window.open('https://drive.google.com/file/d/1exjbvR8VSjZVKIKw5eyzLflt6C9YCvbQ/view?usp=sharing', '_blank');
         });
 
         // Amélioration de l'accessibilité pour le carrousel de recommandations
